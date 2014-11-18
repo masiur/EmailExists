@@ -7,18 +7,20 @@ A simple PHP class that checks if an email address exists on the server. The cla
 How to Use
 ------------
 ```
-	$email = 'emailtocheck@coolmail.com';
-	$email = EmailExists::check($email);
+require 'EmailExists.php';
 
-	if( $email->passed()) {
+$email = 'emailtocheck@coolmail.com';
+$email = EmailExists::check($email);
 
-		echo 'This email is real<br>';
-		echo 'Because EmailExists said: <strong>' . $email->messages()->valid . '</strong>';
-	} else {
+if( $email->passed()) {
 
-		echo 'This email was not found, OUCH!!!<br>';
-		echo 'Because EmailExists: <strong>' . $email->messages()->invalid . '</strong>';
-	}
+	echo 'This email is real<br>';
+	echo 'Because EmailExists said: <strong>' . $email->messages()->valid . '</strong>';
+} else {
+
+	echo 'This email was not found, OUCH!!!<br>';
+	echo 'Because EmailExists: <strong>' . $email->messages()->invalid . '</strong>';
+}
 ```
 
 The `check` method of the `EmailExists` class checks if the email exists and then returns the instance of the class which returns the following methods `failed`, `passed`, `messages`, `toJSON`
